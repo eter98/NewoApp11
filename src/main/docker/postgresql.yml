@@ -1,0 +1,11 @@
+version: '2'
+services:
+  newoapp11-postgresql:
+    image: postgres:11.3
+    # volumes:
+    #     - ~/volumes/jhipster/NewoApp11/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=NewoApp11
+      - POSTGRES_PASSWORD=
+    ports:
+      - 5432:5432
