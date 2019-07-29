@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="chatsListado">
+            <h2><span jhiTranslate="newoApp11App.chatsListado.detail.title">Chats Listado</span> {{chatsListado.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="newoApp11App.chatsListado.propietario">Propietario</span></dt>
+                <dd>
+                    <div *ngIf="chatsListado.propietario">
+                        <a [routerLink]="['/miembros', chatsListado.propietario?.id, 'view']">{{chatsListado.propietario?.identificacion}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="newoApp11App.chatsListado.destinatario">Destinatario</span></dt>
+                <dd>
+                    <div *ngIf="chatsListado.destinatario">
+                        <a [routerLink]="['/miembros', chatsListado.destinatario?.id, 'view']">{{chatsListado.destinatario?.identificacion}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/chats-listado', chatsListado.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

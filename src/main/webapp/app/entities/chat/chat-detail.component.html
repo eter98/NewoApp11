@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="chat">
+            <h2><span jhiTranslate="newoApp11App.chat.detail.title">Chat</span> {{chat.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="newoApp11App.chat.mensaje">Mensaje</span></dt>
+                <dd>
+                    <span>{{chat.mensaje}}</span>
+                </dd>
+                <dt><span jhiTranslate="newoApp11App.chat.fecha">Fecha</span></dt>
+                <dd>
+                    <span>{{chat.fecha}}</span>
+                </dd>
+                <dt><span jhiTranslate="newoApp11App.chat.leido">Leido</span></dt>
+                <dd>
+                    <span>{{chat.leido}}</span>
+                </dd>
+                <dt><span jhiTranslate="newoApp11App.chat.chatsListado">Chats Listado</span></dt>
+                <dd>
+                    <div *ngIf="chat.chatsListado">
+                        <a [routerLink]="['/chats-listado', chat.chatsListado?.id, 'view']">{{chat.chatsListado?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="newoApp11App.chat.de">De</span></dt>
+                <dd>
+                    <div *ngIf="chat.de">
+                        <a [routerLink]="['/miembros', chat.de?.id, 'view']">{{chat.de?.identificacion}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="newoApp11App.chat.para">Para</span></dt>
+                <dd>
+                    <div *ngIf="chat.para">
+                        <a [routerLink]="['/miembros', chat.para?.id, 'view']">{{chat.para?.identificacion}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/chat', chat.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
